@@ -1,3 +1,3 @@
 module.exports = {
-  create: require('./create/create.commands')
+  'p-new': require('./patterns/new/new.commands')
 }

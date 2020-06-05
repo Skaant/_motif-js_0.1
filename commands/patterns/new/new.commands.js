@@ -1,5 +1,5 @@
 const fs = require('fs')
-const config = require('../commands.config')
+const config = require('../../commands.config')
 
 module.exports = (path, id, options = {}) => {
 

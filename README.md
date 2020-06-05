@@ -3,4 +3,4 @@
 
 Generative pattern-oriented framework
 
-For documentation, please visit the [wiki](./motif-js/wiki).
+For documentation, please visit the [wiki](/Skaant/motif-js/wiki).

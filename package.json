@@ -1,0 +1,32 @@
+{
+  "name": "motif",
+  "version": "0.1.0",
+  "description": "Generative pattern-oriented framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skaant/motif-js.git"
+  },
+  "keywords": [
+    "framework",
+    "javascript",
+    "pattern",
+    "patterns",
+    "generative",
+    "motif",
+    "motifs",
+    "abstract",
+    "js",
+    "generic",
+    "researches"
+  ],
+  "author": "imrok.fr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skaant/motif-js/issues"
+  },
+  "homepage": "https://github.com/Skaant/motif-js#readme"
+}

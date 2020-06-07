@@ -1,11 +1,8 @@
 const fs = require('fs')
 const optionsEnum = require('./_enums/options/motif.new.command.options.enum')
-const commandsConfig = require('../commands.config')
+const commandsConfig = require('../../../command/_command.config')
 const motifFile = require('./_files/motif.file')
 
-/**
- * @param Object options @see _motig.new.
- */
 module.exports = (scope, id, options = {}) => {
 
   const _options = Object.values(optionsEnum)

@@ -1,6 +1,9 @@
 const package = require('./package.json')
 console.log(`### motif.js (version ${ package.version }) ###`)
 
+global.ROOT = __dirname.replace(/\\/g, '/') + '/'
+console.log(`* Operating in root folder : "${ global.ROOT }".`)
+
 const commands = require('./_motifs/motif/_commands')
 
 const commandMotif = process.argv[2]

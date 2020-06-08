@@ -1,19 +1,14 @@
 const fs = require('fs')
-const motifPathListProcessor = require('../../_processors/pathList/motif.pathList.processor')
+const motifListProcessor = require('../../_processors/list/motif.list.processor')
 
 module.exports = params => {
 
-  const outputFolder = global.ROOT + '/motif-js.wiki/_motifs'
-
-  if (fs.existsSync(outputFolder)) {
-
-    fs.rmdirSync(outputFolder)
-  }
-
-  fs.mkdirSync(outputFolder)
+  console.log()
 
   fs.writeFileSync(
-    outputFolder + '/index.md',
-    JSON.stringify(motifPathListProcessor(...params))
+    global.ROOT + '/motif-js.wiki/Patterns-list.md',
+    require('./_files/wiki-patterns-list/wiki-patterns-list.file')({
+      motifList: motifListProcessor(...params)
+    })
   )
 }

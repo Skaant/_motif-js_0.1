@@ -1,6 +1,6 @@
-const motifPathListProcessor = require('../../_processors/pathList/motif.pathList.processor')
+const motifPathProcessor = require('../../_processors/path/motif.path.processor')
 
 module.exports = params => {
 
-  console.log(motifPathListProcessor(...params))
+  console.log(motifPathProcessor(...params))
 }

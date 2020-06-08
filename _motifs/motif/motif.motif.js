@@ -1,8 +1,11 @@
+const motifExplorersIdEnum = require('./_explorers/_enums/id/motif.explorers.id.enum')
 
 module.exports = {
   path: '.',
   id: 'motif',
-  commands: require('./_commands'),
+  _explorers: {
+    [motifExplorersIdEnum.HI]: require('./_explorers/hi/motif.hi.explorer')
+  },
   options: {}
 }
       

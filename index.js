@@ -1,20 +1,45 @@
 const package = require('./package.json')
-console.log(`### motif.js (version ${ package.version }) ###`)
+console.log(`# motif.js version ${ package.version }`)
 
-global.ROOT = __dirname.replace(/\\/g, '/') + '/'
-console.log(`* Operating in root folder : "${ global.ROOT }".`)
+global.ROOT = __dirname.replace(/\\/g, '/')
+/** Not for production
+ * 
+ * console.log(`* Operating in root folder : "${ global.ROOT }".`)
+ */
 
-const commands = require('./_motifs/motif/_commands')
+const motifId = process.argv[2]
+const explorerId = process.argv[3]
 
-const commandMotif = process.argv[2]
-const commandId = process.argv[3]
+/** `motifId` et `explorerId` controls */
 
-/** @todo Controls commandMotif et commandId */
+const motifPathListProcessor = require('./_motifs/motif/_processors/pathList/motif.pathList.processor')
 
-console.log(`* Command : "${ commandMotif }" > "${ commandId }"`)
+const motifInstancePath = motifPathListProcessor()
+  .find(motifPath =>
+    
+    motifPath.search(`${ motifId }/${ motifId }.motif.js`) !== -1)
+
+if (!motifInstancePath) {
+
+  throw new Error(`No motif "${ motifId }"`)
+}
+
+const motif = require('./' + motifInstancePath)
+
+const explorer = motif._explorers[explorerId]
+
+if (!explorer) {
+
+  throw new Error(`No explorer "${ explorerId}" in motif "${ motifId }"`)
+}
 
 const params = process.argv.slice(4)
-console.log(`* Parameters : [ "${ params.join('", "') }" ]`)
+/** Not for production
+ * 
+ * console.log(`* Parameters : [ "${ params.join('", "') }" ]`)
+ */
 
-console.log('Executing ...\n\n')
-commands[commandId](...params)
+/** -'-.-'-.-'-.-'- */
+
+const explorerCliProcessor = require(`${ global.ROOT }/_motifs/explorer/_processors/cli/explorer.cli.processor.js`)
+explorerCliProcessor(motif, explorer, params)

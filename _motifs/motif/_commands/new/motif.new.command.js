@@ -1,6 +1,5 @@
 const fs = require('fs')
 const optionsEnum = require('./_enums/options/motif.new.command.options.enum')
-const commandsConfig = require('../../../command/_command.config')
 const motifFile = require('./_files/motif.file')
 
 module.exports = (scope, id, options = {}) => {
@@ -17,7 +16,7 @@ module.exports = (scope, id, options = {}) => {
   /**
    * 1. Creates the `_motifs` folder
    */
-  const motifsFolderPath = commandsConfig.root + '/' + scope + '/_motifs'
+  const motifsFolderPath = global.ROOT + '/' + scope + '/_motifs'
 
   if (!fs.existsSync(motifsFolderPath)) {
 

@@ -1,13 +1,6 @@
-const fs = require('fs')
-const commandsConfig = require('../../../command/_command.config')
-const recursiveDirReader = require('../../../../_utils/recursiveDirReader/recursiveDirReader')
+const motifPathListProcessor = require('../../_processors/pathList/motif.pathList.processor')
 
-module.exports = (scope = '') =>
+module.exports = params => {
 
-  console.log(recursiveDirReader(global.ROOT + scope)
-    /**
-     * Exact match, but
-     *  could be extended to meet partial specifications
-     *  and allow report & diagnosis
-     */
-    .filter(path => path.search(/_motifs\/(.*)\/\1\.motif\.js/) !== -1))
+  console.log(motifPathListProcessor(...params))
+}

@@ -24,7 +24,7 @@ const recursiveDirReader = path => {
     ) => {
 
       const name = dirent.name
-      const _path = path + name
+      const _path = path + '/' + name
 
       /** The `dirent` is a file */
       if (!dirent.isDirectory()) {
@@ -39,7 +39,7 @@ const recursiveDirReader = path => {
 
         return [
           ...files,
-          ...recursiveDirReader(_path + '/')
+          ...recursiveDirReader(_path)
         ]
 
       return files

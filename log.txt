@@ -1,0 +1,23 @@
+# motif.js version 0.1.0
+[
+  '/_motifs/command/command.motif.js',
+  '/_motifs/config/config.motif.js',
+  '/_motifs/constructor/constructor.motif.js',
+  '/_motifs/enum/enum.motif.js',
+  '/_motifs/explorer/explorer.motif.js',
+  '/_motifs/file/file.motif.js',
+  '/_motifs/folder/folder.motif.js',
+  '/_motifs/motif/motif.motif.js',
+  '/_motifs/processor/processor.motif.js'
+]
+[
+  '/_motifs/command/command.motif.js',
+  '/_motifs/config/config.motif.js',
+  '/_motifs/constructor/constructor.motif.js',
+  '/_motifs/enum/enum.motif.js',
+  '/_motifs/explorer/explorer.motif.js',
+  '/_motifs/file/file.motif.js',
+  '/_motifs/folder/folder.motif.js',
+  '/_motifs/motif/motif.motif.js',
+  '/_motifs/processor/processor.motif.js'
+]

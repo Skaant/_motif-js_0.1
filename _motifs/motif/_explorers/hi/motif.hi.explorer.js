@@ -4,6 +4,7 @@ module.exports = {
   id: 'motif hi',
   _commands: {
     [motifCommandsIdEnum.REF_LIST]: require('../../_commands/refList/motif.refList.command'),
-    [motifCommandsIdEnum.LIST]: require('../../_commands/list/motif.list.command')
+    [motifCommandsIdEnum.LIST]: require('../../_commands/list/motif.list.command'),
+    [motifCommandsIdEnum.DOC]: require('../../_commands/doc/motif.doc.command')
   }
 }

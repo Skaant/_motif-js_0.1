@@ -1,6 +1,6 @@
 module.exports = ({
   id,
-  options
+  ...properties
 }) =>
 `
 /**
@@ -9,7 +9,7 @@ module.exports = ({
 module.exports = {
   id: '${ id }',
 ${
-    Object.entries(options)
+    Object.entries(properties)
       .map(([ _id, value ]) =>          
 
         `  ${ _id } : ${ value }`)

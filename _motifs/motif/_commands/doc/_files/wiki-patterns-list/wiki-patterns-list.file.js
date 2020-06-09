@@ -1,13 +1,24 @@
 module.exports = ({ motifList }) =>
 
-`
+`*Generated ${new Date(Date.now()).toString().slice(0, 33) }*
+
+* Number of patterns identified : ${ motifList.length }
+
 ## Patterns by id alphabetical order
+
+${
+  motifList
+    .map(motif =>
+    
+      `* [${ motif.id }](#${ motif.id })`)
+    .join('\n')
+}
 
 ${
   motifList.map(motif =>
     
 `
-## ${ motif.id }
+## \`${ motif.id }\`
 
 ${
   motif.description
@@ -17,18 +28,17 @@ ${
 }
 
 ${
-  motif._explorers ?(
+  motif._explorers 
+    ? (
 `
 ### Explorers
 
 ${
-  Object.keys(motif._explorers).map(explorerId => `* ${ explorerId }`).join('\n')
-}
-`)
+  motif._explorers.map(explorerId => `* \`${ explorerId }\``).join('\n')
+}`)
     : ''
 }
 
 `)
   .join('\n')
-}
-`
+}`

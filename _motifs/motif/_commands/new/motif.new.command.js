@@ -1,17 +1,8 @@
 const fs = require('fs')
-const optionsEnum = require('./_enums/options/motif.new.command.options.enum')
+const propertiesEnum = require('../../_enums/properties/motif.properties.enum')
 const motifFile = require('./_files/motif.file')
 
-module.exports = (scope, id, options = {}) => {
-
-  const _options = Object.values(optionsEnum)
-    .reduce(
-      (acc, option) => ({
-        ...acc,
-        [option]: options[option] || false,
-      }),
-      {}
-    )
+module.exports = (scope, id, properties = {}) => {
 
   /**
    * 1. Creates the `_motifs` folder
@@ -35,7 +26,7 @@ module.exports = (scope, id, options = {}) => {
   }
 
   /**
-   * 2. Creates the `motif.js` file
+   * 2. Avoid existing `motif.js` file override
    */
   const filePath = folderPath + '/' + id + '.motif.js'
 
@@ -45,12 +36,25 @@ module.exports = (scope, id, options = {}) => {
 
   } else {
 
+    console.log(id)
+
+    /**
+     * 3. Creates the content and the file
+     */
+    const _properties = Object.values(propertiesEnum)
+      .reduce(
+        (acc, propertyId) => ({
+          ...acc,
+          [propertyId]: properties[propertyId] || false,
+        }),
+        {
+          id
+        }
+      )
+
     fs.writeFileSync(
       filePath,
-      motifFile({
-        id,
-        options: _options
-      })
+      motifFile(_properties)
     )
 
     console.log(`Pattern "${ id }" succesfully created !\n* File path : "${ scope + '/_motifs/' + id + '/' + id + '.motif.js' }"`)

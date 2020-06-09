@@ -21,16 +21,31 @@ const motifInstancePath = motifPathListProcessor()
 
 if (!motifInstancePath) {
 
-  throw new Error(`No motif "${ motifId }"`)
+  throw new Error(`No motif "${ motifId }" file at "${ motifInstancePath }.`)
 }
 
-const motif = require('./' + motifInstancePath)
+/** @todo Replace with a processor (motif.get) */
+const motif = {
+  path: motifInstancePath,
+  ...require('./' + motifInstancePath)
+}
 
-const explorer = motif._explorers[explorerId]
+if (!motif._explorers.includes(explorerId)) {
+
+  throw new Error(`No explorer "${ explorerId }" registered in motif "${ motifId }".`)
+}
+
+const explorerPath = motif.path.slice(
+    0, 
+    motif.path.length - `${ motifId }.motif.js`.length
+  )
+  + `_explorers/${ explorerId }/${ motifId}.${ explorerId }.explorer.js`
+
+const explorer = require('./' + explorerPath)
 
 if (!explorer) {
 
-  throw new Error(`No explorer "${ explorerId}" in motif "${ motifId }"`)
+  throw new Error(`No explorer "${ explorerId}" file at "${ explorerPath }".`)
 }
 
 const params = process.argv.slice(4)

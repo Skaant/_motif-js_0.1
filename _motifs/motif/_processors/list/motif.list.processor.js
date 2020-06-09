@@ -4,6 +4,7 @@ const motifPathListProcessor = require('../pathList/motif.pathList.processor')
 module.exports = scope =>
 
   motifPathListProcessor(scope)
-    .map(path => require(global.ROOT + path))
-
-  
+    .map(path => ({
+      path,
+      ...require(global.ROOT + path)
+    }))

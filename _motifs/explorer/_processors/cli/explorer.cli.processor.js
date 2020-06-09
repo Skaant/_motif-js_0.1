@@ -13,13 +13,21 @@ module.exports = (motif, explorer, params) => {
     'line',
     input => {
 
-      const command = explorer._commands[input]
+      const splitInput = input.split(' ')
+
+      const command = explorer._commands[splitInput[0]]
 
       if (command) {
 
-        command(params)
+        try {
 
-        console.log(Object.keys(explorer._commands))
+          command(...splitInput.slice(1))
+
+        } catch (err) {
+
+          console.error(err)
+          
+        }
 
       } else {
 

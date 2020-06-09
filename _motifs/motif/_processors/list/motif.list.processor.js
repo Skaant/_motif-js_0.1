@@ -1,9 +1,12 @@
-const fs = require('fs')
-const motifPathListProcessor = require('../pathList/motif.pathList.processor')
+const recursiveDirReader = require(global.ROOT + '/_utils/recursiveDirReader/recursiveDirReader')
 
-module.exports = scope =>
+module.exports = (motif, scope = '') =>
 
-  motifPathListProcessor(scope)
+  recursiveDirReader(global.ROOT + scope)
+    .filter(path =>
+      
+      path.search(motif.folderNamePattern) !== -1
+        && path.search(motif.fileNamePattern) !== -1)
     .map(path => ({
       path,
       ...require(global.ROOT + path)

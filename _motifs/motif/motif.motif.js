@@ -2,6 +2,8 @@ const motifExplorersIdEnum = require('./_explorers/_enums/id/motif.explorers.id.
 
 module.exports = {
   id: 'motif',
+  folderPathPattern: /_motifs\/.*\//,
+  fileNamePattern: /.*\.motif\.js/,
   _explorers: [
     motifExplorersIdEnum.HI
   ]

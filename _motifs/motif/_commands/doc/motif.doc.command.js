@@ -1,5 +1,5 @@
 const fs = require('fs')
-const motifListProcessor = require('../../_processors/list/motif.list.processor')
+const motifListProcessor = require(global.ROOT + '/_motifs/motif/_processors/list/motif.list.processor')
 
 module.exports = params => {
 
@@ -8,7 +8,10 @@ module.exports = params => {
   fs.writeFileSync(
     filePath,
     require('./_files/table-of-patterns/table-of-patterns.file')({
-      motifList: motifListProcessor(...(params || []))
+      motifList: motifListProcessor(
+        require('../../motif.motif'),
+        ...(params || [])
+      )
     })
   )
 

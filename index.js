@@ -12,22 +12,18 @@ const explorerId = process.argv[3]
 
 /** `motifId` et `explorerId` controls */
 
-const motifPathListProcessor = require('./_motifs/motif/_processors/pathList/motif.pathList.processor')
+const motifMotif = require('./_motifs/motif/motif.motif')
+const motifListProcessor = require('./_motifs/motif/_processors/list/motif.list.processor')
 
-const motifInstancePath = motifPathListProcessor()
-  .find(motifPath =>
+/** @todo Replace with a single selection processor */
+const motif = motifListProcessor(motifMotif, '')
+  .find(motif =>
     
-    motifPath.search(`${ motifId }/${ motifId }.motif.js`) !== -1)
+    motif.path.search(`${ motifId }/${ motifId }.motif.js`) !== -1)
 
-if (!motifInstancePath) {
+if (!motif) {
 
-  throw new Error(`No motif "${ motifId }" file at "${ motifInstancePath }.`)
-}
-
-/** @todo Replace with a processor (motif.get) */
-const motif = {
-  path: motifInstancePath,
-  ...require('./' + motifInstancePath)
+  throw new Error(`No motif "${ motifId }".`)
 }
 
 if (!motif._explorers.includes(explorerId)) {

@@ -36,8 +36,6 @@ module.exports = (scope, id, properties) => {
 
   } else {
 
-    console.log(id)
-
     /**
      * 3. Creates the content and the file
      */

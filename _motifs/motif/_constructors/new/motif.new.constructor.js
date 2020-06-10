@@ -39,15 +39,15 @@ module.exports = (scope, id, properties) => {
     /**
      * 3. Creates the content and the file
      */
+    properties['id'] = id
+
     const _properties = Object.values(propertiesEnum)
       .reduce(
         (acc, propertyId) => ({
           ...acc,
           [propertyId]: properties[propertyId] || false,
         }),
-        {
-          id
-        }
+        {}
       )
 
     fs.writeFileSync(

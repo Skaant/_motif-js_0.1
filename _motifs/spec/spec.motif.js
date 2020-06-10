@@ -3,7 +3,7 @@
  * Motif "false"
  */
 module.exports = {
-  id: 'false',
+  id: 'spec',
   folderPathPattern: /_specs\/.*\//,
   fileNamePattern: /.*\.spec\.js/,
   _processors : false,

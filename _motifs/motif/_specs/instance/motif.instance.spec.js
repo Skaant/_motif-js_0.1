@@ -1,13 +1,13 @@
 const assert = require('assert')
+const assertion1 = require('./_assertions/id/motif.id.instance.assertion')
 
 module.exports = {
   
   test: instance => {
 
     // Big rule 1 ?
-    console.log('* Patterns should have an `id` property')
-    assert.ok(instance.id, JSON.stringify(instance))
-    console.log(`\`${ instance.id }\` pattern : ok`)
+    console.log('* ' + assertion1.label)
+    console.log(assertion1.test(instance))
 
     console.log('* They *should* have a `folderPathPattern` property')
     console.log('* They *should* have a `fileNamePattern` property')

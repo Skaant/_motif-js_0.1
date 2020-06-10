@@ -2,12 +2,15 @@ const recursiveDirReader = require(global.ROOT + '/_utils/recursiveDirReader/rec
 
 module.exports = (motif, scope = '') =>
 
-  recursiveDirReader(global.ROOT + scope)
-    .filter(path =>
-      
-      path.search(motif.folderNamePattern) !== -1
-        && path.search(motif.fileNamePattern) !== -1)
-    .map(path => ({
-      path,
-      ...require(global.ROOT + path)
-    }))
+  (motif.folderPathPattern
+      && motif.fileNamePattern
+      && recursiveDirReader(global.ROOT + scope)
+        .filter(path =>
+          
+          path.search(motif.folderPathPattern) !== -1
+            && path.search(motif.fileNamePattern) !== -1)
+        .map(path => ({
+          path,
+          ...require(global.ROOT + path)
+        })))
+    || []

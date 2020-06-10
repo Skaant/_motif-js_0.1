@@ -4,5 +4,7 @@
  */
 module.exports = {
   id: 'enum',
-  commands : false
+  commands : false,
+  folderPathPattern: /\_enums\/.*\//,
+  fileNamePattern: /\/.*\.enum\.js/
 }

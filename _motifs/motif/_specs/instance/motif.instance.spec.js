@@ -1,21 +1,12 @@
-const assert = require('assert')
-const assertion1 = require('./_assertions/id/motif.id.instance.assertion')
+const assertion1 = 
 
 module.exports = {
   
-  test: instance => {
-
-    // Big rule 1 ?
-    console.log('* ' + assertion1.label)
-    console.log(assertion1.test(instance))
-
-    console.log('* They *should* have a `folderPathPattern` property')
-    console.log('* They *should* have a `fileNamePattern` property')
-
-    console.log('* They *should* have a `name` property')
-
-    console.log('* They *should* have a `description` property')
-
-    return true
-  }
+  _assertions: [
+    require('./_assertions/id/motif.id.instance.assertion'),
+    require('./_assertions/fileNamePattern/motif.fileNamePattern.instance.assertion'),
+    require('./_assertions/folderPathPattern/motif.folderPathPattern.instance.assertion')
+    /* console.log('* They *should* have a `name` property')
+    console.log('* They *should* have a `description` property') */
+  ]
 }

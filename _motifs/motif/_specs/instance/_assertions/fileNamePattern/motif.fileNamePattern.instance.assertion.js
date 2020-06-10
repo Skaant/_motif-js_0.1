@@ -2,15 +2,16 @@ const assert = require('assert')
 const assertionTypeEnum = require('../../../../../assertion/_enums/type/assertion.type.enum')
 
 module.exports = {
-  label: 'Pattern `id`',
-  type: assertionTypeEnum.ERROR,
+  label: 'Pattern `fileNamePattern`',
+  type: assertionTypeEnum.IMPROVEMENT,
+  score: 8,
   test: instance => {
     
     assert.ok(
-      instance.id,
+      instance.fileNamePattern,
       JSON.stringify(instance)
     )
 
-    return `\`${ instance.id }\``
+    return `"${ instance.fileNamePattern }"`
   }
 }

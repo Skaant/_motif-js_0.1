@@ -1,8 +1,14 @@
 const motifSpecProcessor = require('../../_processors/spec/motif.spec.processor')
 
-module.exports = (scope = '') =>
+module.exports = (scope = '') => {
     
-  motifSpecProcessor(
-    require('../../_specs/instance/motif.instance.spec'),
+  const path = '../../_specs/instance/motif.instance.spec'
+
+  return motifSpecProcessor(
+    {
+      path,
+      ...require(path)
+    },
     require('../../motif.motif')
   )
+}
